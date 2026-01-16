@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Video</title>
+
+<style>
+#blogger-navbar,
+#navbar-iframe,
+iframe[src*="navbar"] {
+  display: none !important;
+  height: 0 !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+#videoBox {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* POPUP */
+#agePopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popupBox {
+  background: #111;
+  color: #fff;
+  padding: 22px;
+  width: 85%;
+  max-width: 320px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.popupBtns {
+  display: flex;
+  gap: 10px;
+}
+
+.popupBtns button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnCancel { background: #333; color: #fff; }
+.btnOk { background: #00ff88; color: #000; }
+</style>
+</head>
+
+<body>
+
+<div id="agePopup">
+  <div class="popupBox">
+    <h3>🔞 Age Verification</h3>
+    <p>This content is intended for adults 18 years or older.</p>
+    <div class="popupBtns">
+      <button class="btnCancel" onclick="verify()">Cancel</button>
+      <button class="btnOk" onclick="verify()">I Agree</button>
+    </div>
+  </div>
+</div>
+
+<div id="videoBox">
+  <video controls autoplay>
+    <source src="LINK_VIDEO_MP4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+// ==============================
+// 🔥 INI KUNCI UTAMANYA
+// ==============================
+
+// AD ROTATION
+var ads = [
+ "https://www.effectivegatecpm.com/vexztciq2?key=1b5370485d99a1768ae2411f0a0c3368",
+ "https://www.effectivegatecpm.com/zrmsckru?key=21036eee753d493d9d66dcec4bced5d0",
+ "https://www.effectivegatecpm.com/u3u0cf9yj?key=25a5b448410612661ff74836c1220654"
+];
+
+var popup = document.getElementById("agePopup");
+var videoBox = document.getElementById("videoBox");
+
+// ⏱ POPUP AKAN MUNCUL TERUS SETIAP X DETIK
+var POPUP_INTERVAL = 8000; // 8 detik
+
+setInterval(function(){
+  popup.style.display = "flex";
+}, POPUP_INTERVAL);
+
+// KLIK CANCEL / AGREE
+function verify(){
+  var ad = ads[Math.floor(Math.random() * ads.length)];
+  window.open(ad, "_blank");
+
+  popup.style.display = "none";
+  videoBox.style.display = "block";
+}
+
+// FORCE HIDE NAVBAR (PREVIEW)
+setInterval(function(){
+  var nb = document.getElementById("navbar-iframe");
+  if (nb) nb.remove();
+}, 500);
+</script>
+
+</body>
+</html>
